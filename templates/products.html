@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Products</h2>
+    <div class="list-group">
+        {% for product in products %}
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">{{ product.name }}</h4>
+                <p class="list-group-item-text">Price: ${{ product.price }}</p>
+                {% if product.image_url %}
+                    <img src="{{ product.image_url }}" alt="Image" class="img-fluid" style="max-width: 200px;"><br>
+                {% endif %}
+                <p class="list-group-item-text">Description: {{ product.description }}</p>
+                <form action="{{ url_for('delete_product', product_id=product.id) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

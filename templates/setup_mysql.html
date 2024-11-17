@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup MySQL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Setup MySQL Configuration</h1>
+        <form method="POST" action="{{ url_for('setup_mysql') }}">
+            <div class="form-group">
+                <label for="host">MySQL Host:</label>
+                <input type="text" name="host" id="host" class="form-control" placeholder="localhost" required>
+            </div>
+            <div class="form-group">
+                <label for="port">MySQL Port:</label>
+                <input type="text" name="port" id="port" class="form-control" placeholder="3306" required>
+            </div>
+            <div class="form-group">
+                <label for="user">MySQL User:</label>
+                <input type="text" name="user" id="user" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">MySQL Password:</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Your password">
+            </div>
+            <div class="form-group">
+                <label for="database">MySQL Database:</label>
+                <input type="text" name="database" id="database" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Configuration</button>
+        </form>
+    </div>
+</body>
+</html>

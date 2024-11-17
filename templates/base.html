@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMS</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-primary text-white p-3">
+        <div class="container">
+            <h1>My CMS</h1>
+            <nav>
+                <a href="{{ url_for('index') }}" class="btn btn-light">Home</a>
+                <!-- Nếu đã đăng nhập, hiển thị các nút khác -->
+                {% if g.is_logged_in %}
+                    <a href="{{ url_for('add_product') }}" class="btn btn-light">Add Product</a>
+                    <a href="{{ url_for('products') }}" class="btn btn-light">Products</a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-light">Logout</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-light">Register</a>
+                {% else %}
+                    <!-- Nếu chưa đăng nhập, chỉ hiển thị nút login -->
+                    <a href="{{ url_for('login') }}" class="btn btn-light">Login</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
